@@ -17,9 +17,9 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Tambah Data Logistik</h6>
-        
+
                {{$strtotime=date('Y-m-d H:i:s',time());}}
-               
+
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -54,7 +54,7 @@
                                     <option value="{{ $itemvendor-> nm_vendor }}">{{ $itemvendor -> nm_vendor }}
                                     @endforeach
                                     </option>
-                                  
+
                                 </select>
                                 @error('vendor')
                                 <div class="invalid-feedback">
@@ -143,7 +143,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-   
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
