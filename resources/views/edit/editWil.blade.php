@@ -23,9 +23,9 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Edit Data Wilayah</h6>
-        
-               {{$strtotime=date('Y-m-d H:i:s',time());}}
-               
+
+               {{$strtotime=date('Y-m-d H:i:s',time())}}
+
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -53,7 +53,7 @@
                             </div>
                         </td>
                     </tr>
-                   
+
                     <tr>
                         <td>Wilayah<span class="text-danger" title="This field is required">*</span></td><td>:</td><td><input type="text" name="Wilayah" autocomplete="off" placeholder="Masukan Wilayah..." value="{{ $editWil->nm_wilayah }}" class="form-control form-control-user @error('Wilayah') is-invalid @enderror" autofocus>
                             @error('Wilayah')
@@ -63,7 +63,7 @@
                               </div>
                         </td>
                     </tr>
-                   <input type="hidden" name="updated_at" autocomplete="off" value="{{$strtotime=date('Y-m-d H:i:s',time());}}" class="form-control form-control-user" >
+                   <input type="hidden" name="updated_at" autocomplete="off" value="{{$strtotime=date('Y-m-d H:i:s',time())5}}" class="form-control form-control-user" >
                 </table>
 
                 <!--end Form input data logistik-->
@@ -131,17 +131,17 @@
         <!-- Bootstrap core JavaScript-->
         <script src="{{ asset('vendor/jquery/jquery.min.js')}}"></script>
         <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    
+
         <!-- Core plugin JavaScript-->
         <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-    
+
         <!-- Custom scripts for all pages-->
         <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
-    
+
         <!-- Page level plugins -->
         <script src="{{ asset('vendor/datatables/jquery.dataTables.min.js')}}"></script>
         <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
-    
+
         <!-- Page level custom scripts -->
         <script src="js/demo/datatables-demo.js"></script>
         <style type="text/css">
@@ -149,10 +149,10 @@
             height:34px !important;
         }
         .select2-container--default .select2-selection--single{
-            border: 1px solid #ccc !important; 
-             border-radius: 0px !important; 
+            border: 1px solid #ccc !important;
+             border-radius: 0px !important;
         }
-        
+
         </style>
     </body>
 
