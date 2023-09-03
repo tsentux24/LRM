@@ -34,20 +34,48 @@ Route::group(['middleware'=>['auth','hakakses:admin,operator']],function(){
 Route::group(['middleware' => ['auth', 'hakakses:admin']], function() {
     #Route::post('/logout',[LoginController::class,'logout']);
     Route::get('/admin', [SuperadminController::class, 'index']);
-    Route::get('/logistik_detail', fn () => view('logistik_detail'));
-    Route::get('/admin',[LogistikController::class,'logistik_detail_SUM']);
-    Route::get('/DetailUser', fn () => view('Detail_User'));
-    Route::get('/registerUser',fn() =>view('register.registerUser'));
-    Route::get('/historyMutasi', fn () => view('historyMutasi'));
-    Route::get('/mutasi_logistik', fn () => view('insert.addmutasilogistik'));
-    Route::get('/vendor_detail', fn () => view('vendor_detail'));
-    Route::get('/wilayah_detail', fn () => view('wilayah_detail'));
-    Route::get('/wp_detail', fn () => view('wp_detail'));
-    Route::get('/addlogistik', fn () => view('insert.addlogistik'));
-    Route::get('/addvendor', fn () => view('insert.addvendor'));
-    Route::get('/addwilayah', fn () => view('insert.addwilayah'));
-    Route::get('/addwp', fn () => view('insert.addwp'));
-    Route::get('/addinstallation',fn()=> view('insert.AddInstallation'));
+    Route::get('/logistik_detail', function (){
+        return view('logistik_detail');
+    });
+    Route::get('/admin',[LogistikController::class,'logistikdetail']);
+    Route::get('/DetailUser', function () {
+        return view('Detail_User');
+    });
+    Route::get('/registerUser',function() {
+        return view('register.registerUser');
+    });
+    Route::get('/historyMutasi', function () {
+        return view('historyMutasi');
+    });
+    Route::get('/mutasi_logistik', function (){
+        return view('insert.addmutasilogistik');
+    });
+    Route::get('/vendor_detail', function () {
+        return view('vendor_detail');
+    });
+    Route::get('/wilayah_detail', function (){
+        return view('wilayah_detail');
+    });
+    Route::get('/wp_detail', function (){
+        return view('wp_detail');
+
+    });
+    Route::get('/addlogistik', function (){
+        return view('insert.addlogistik');
+    });
+    Route::get('/addvendor', function (){
+        return view('insert.addvendor');
+    });
+    Route::get('/addwilayah', function (){
+        return view('insert.addwilayah');
+    });
+    Route::get('/addwp', function (){
+        return view('insert.addwp');
+
+    });
+    Route::get('/addinstallation',function (){
+        return view('insert.AddInstallation');
+    });
     Route::get('logistik_detail', [LogistikController::class, 'logistikdetail']);
     Route::get('DetailUser',[RegisUserController::class,'UserDetail']);
     Route::get('pemasangan_detail', [PemasanganDetailContraller::class, 'index']);

@@ -16,8 +16,7 @@ class CreateTblpemasanganTable extends Migration
         Schema::create('tblpemasangan', function (Blueprint $table) {
             $table->char('no_seri', 55)->primary();
             $table->char('nama_brg', 100);
-            $table->char('id_vendor', 15);
-            $table->char('wajib_pajak', 100);
+            $table->char('costumer', 100);
             $table->char('tgl_pasang');
             $table->char('keterangan', 135);
             $table->timestamps();

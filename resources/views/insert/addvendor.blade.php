@@ -17,9 +17,9 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Tambah Data Vendor</h6>
-        
-               {{$strtotime=date('Y-m-d H:i:s',time());}}
-               
+
+               {{$strtotime=date('Y-m-d H:i:s',time())}}
+
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -45,7 +45,7 @@
                               </div>
                         </td>
                     </tr>
-                   <input type="hidden" name="created_at" autocomplete="off" value="{{$strtotime=date('Y-m-d H:i:s',time());}}" class="form-control form-control-user" >
+                   <input type="hidden" name="created_at" autocomplete="off" value="{{$strtotime=date('Y-m-d H:i:s',time())}}" class="form-control form-control-user" >
                 </table>
 
                 <!--end Form input data logistik-->
@@ -86,7 +86,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

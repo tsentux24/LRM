@@ -23,9 +23,9 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Tambah Data Mutasi Logistik</h6>
-        
-               {{$strtotime=date('Y-m-d H:i:s',time());}}
-               
+
+               {{$strtotime=date('Y-m-d H:i:s',time())}}
+
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -39,7 +39,7 @@
                                 <option value="">Pilih Noseri Device / Nama Device</option>
                                 @foreach($tbllogistik as $datalogistiks)
                                 <option value="{{ $datalogistiks-> no_seri }}&#44;{{ $datalogistiks -> nama_brg }}">{{ $datalogistiks-> no_seri }}&#44;{{ $datalogistiks -> nama_brg }}</option>
-                                    
+
                                 @endforeach
                                 </option>
                             </select>
@@ -68,7 +68,7 @@
                               </div>
                         </td>
                     </tr>
-                   <input type="hidden" name="created_at" autocomplete="off" value="{{$strtotime=date('Y-m-d H:i:s',time());}}" class="form-control form-control-user" >
+                   <input type="hidden" name="created_at" autocomplete="off" value="{{$strtotime=date('Y-m-d H:i:s',time())}}" class="form-control form-control-user" >
                 </table>
 
                 <!--end Form input data logistik-->
@@ -112,7 +112,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -133,8 +133,8 @@
     height:34px !important;
 }
 .select2-container--default .select2-selection--single{
-         border: 1px solid #ccc !important; 
-     border-radius: 0px !important; 
+         border: 1px solid #ccc !important;
+     border-radius: 0px !important;
 }
 
 </style>
