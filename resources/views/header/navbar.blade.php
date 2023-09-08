@@ -42,7 +42,7 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">List Components:</h6>
-                    <a class="collapse-item" href="/logistik_detail">Logistik</a>
+                    <a class="collapse-item" href="/logistik_detail">Dafar Mechnine</a>
                     <a class="collapse-item" href="/pemasangan_detail">Installation/Pemasangan</a>
                     <a class="collapse-item" href="/mutasi_logistik">Mutasi</a>
                 </div>

@@ -1,4 +1,4 @@
-@extends('header.apps',['title'=>'Tambah Data Vendor'])
+@extends('header.apps',['title'=>'Tambah Data Lokasi'])
 @section('content')
 
 
@@ -10,13 +10,13 @@
                 <h6 class="m-0 font-weight-bold text-primary">Note : </h6>
             </div>
             <div class="card-body">
-                <p>Form Untuk Menambahkan Data <code> Vendor </code></p>
+                <p>Form Untuk Menambahkan Data <code> Lokasi </code></p>
             </div>
         </div>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Tambah Data Vendor</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Tambah Data Lokasi</h6>
 
                {{$strtotime=date('Y-m-d H:i:s',time())}}
 
@@ -27,9 +27,9 @@
                    <table class="table table-responsive" align="center">
                     <form action="/insertvendor" method="post">
                        @csrf
-                    <tr>
-                        <td>Nama Vendor <span class="text-danger" title="This field is required">*</span></td><td>:</td><td><input type="text" name="Nama_Vendor" autocomplete="off" placeholder="Masukan Nama Vendor..." class="form-control form-control-user @error('Nama_Vendor') is-invalid @enderror" autofocus>
-                            @error('Nama_Vendor')
+                       <tr>
+                        <td>Kode Lokasi <span class="text-danger" title="This field is required">*</span></td><td>:</td><td><input type="text" name="Kode_Lokasi" autocomplete="off" placeholder="Masukan Kode Lokasi..." class="form-control form-control-user @error('Kode_Lokasi') is-invalid @enderror" autofocus>
+                            @error('Kode_Lokasi')
                             <div class="invalid-feedback">
                                 {{ $message }}
                                 @enderror
@@ -37,8 +37,17 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Alamat Vendor <span class="text-danger" title="This field is required">*</span></td><td>:</td><td><input type="text" name="Alamat_Vendor" autocomplete="off" placeholder="Masukan Alamat Vendor..." class="form-control form-control-user @error('Alamat_Vendor') is-invalid @enderror" autofocus>
-                            @error('Alamat_Vendor')
+                        <td>Nama Lokasi <span class="text-danger" title="This field is required">*</span></td><td>:</td><td><input type="text" name="Nama_Lokasi" autocomplete="off" placeholder="Masukan Nama Lokasi..." class="form-control form-control-user @error('Nama_Lokasi') is-invalid @enderror" autofocus>
+                            @error('Nama_Lokasi')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                                @enderror
+                              </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Alamat Lokasi<span class="text-danger" title="This field is required">*</span></td><td>:</td><td><input type="text" name="Alamat_Lokasi" autocomplete="off" placeholder="Masukan Alamat Lokasi..." class="form-control form-control-user @error('Alamat_Lokasi') is-invalid @enderror" autofocus>
+                            @error('Alamat_Lokasi')
                             <div class="invalid-feedback">
                                 {{ $message }}
                                 @enderror
@@ -52,7 +61,7 @@
             </div>
             <div class="modal-footer">
                 <button type="reset" class="btn btn-danger"><i class="fa fa-refresh"></i> Reset</button>
-                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save Data Vendor</button>
+                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save Data Lokasi</button>
 
                 </form>
             </div>

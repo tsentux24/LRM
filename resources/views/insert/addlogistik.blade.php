@@ -47,11 +47,11 @@
                     </tr>
                    <input type="hidden" name="created_at" autocomplete="off" value="{{$strtotime=date('Y-m-d H:i:s',time())}}" class="form-control form-control-user" >
                         <tr>
-                            <td>Vendor <span class="text-danger" title="This field is required">*</span></td><td>:</td><td>
+                            <td>Status Lokasi <span class="text-danger" title="This field is required">*</span></td><td>:</td><td>
                                 <select name="vendor" class="form-control form-control-user @error ('vendor') is-invalid @enderror">
-                                    <option value="">Pilih Vendor</option>
-                                    @foreach($dataVendor as $itemvendor)
-                                    <option value="{{ $itemvendor-> nm_vendor }}">{{ $itemvendor -> nm_vendor }}
+                                    <option value="">Pilih Status Lokasi</option>
+                                    @foreach($datakonsumen as $itemkonsumen)
+                                    <option value="{{ $itemkonsumen-> nama_toko }}">{{ $itemkonsumen -> kode_toko }}-{{ $itemkonsumen -> nama_toko }}
                                     @endforeach
                                     </option>
 
@@ -61,36 +61,11 @@
                                 {{ $message }}
                                 @enderror
                                 </div>
-                                Klik Di Sini <a href="/addvendor"> <i class="fa-solid fa-circle-plus"> </i> Data Vendor </a>
+                                Klik Di Sini <a href="/addvendor"> <i class="fa-solid fa-circle-plus"> </i> Data Lokasi </a>
                             </td>
                         </tr>
                         <tr>
-                            <td>Status Device<span class="text-danger" title="This field is required">*</span></td><td>:</td><td><input type="text" name="status_device" autocomplete="off" placeholder="Ext:OK, Aktiv, Kiriman HO,HB,TS Dll..." class="form-control form-control-user @error ('status_device') is-invalid @enderror" autofocus>
-                            @error('status_device')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Lokasi Device <span class="text-danger" title="This field is required">*</span></td><td>:</td><td>
-                                <select name="location_device" class="form-control form-control-user @error ('location_device') is-invalid @enderror" >
-                                    <option value="">Pilih Lokasi Device</option>
-                                    @foreach($datawilayah as $itemwilayah)
-                                    <option value="{{ $itemwilayah-> kode_wilayah }}&#8722;{{ $itemwilayah -> nm_wilayah }}">{{ $itemwilayah-> kode_wilayah }}&#8722;{{ $itemwilayah -> nm_wilayah }}</option>
-                                    @endforeach
-                                </select>
-                                @error('location_device')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                                Klik Di Sini <a href="/addwilayah"> <i class="fa-solid fa-circle-plus"> </i> Data Lokasi </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Kondisi Device<span class="text-danger" title="This field is required">*</span></td><td>:</td><td>
+                            <td>Kondisi Mechine<span class="text-danger" title="This field is required">*</span></td><td>:</td><td>
                                 <select name="kondisi_device" class="form-control form-control-user @error ('kondisi_device') is-invalid @enderror">
                                 <option value="">Pilih Kondisi</option>
                                 <option value="BAIK">BAIK</option>

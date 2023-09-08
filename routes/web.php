@@ -5,6 +5,7 @@ use App\Exports\LogistikDataExport;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\groupController;
+use App\Http\Controllers\KonsumenController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\vendorController;
 use App\Http\Controllers\TblareaController;
@@ -37,7 +38,7 @@ Route::group(['middleware' => ['auth', 'hakakses:admin']], function() {
     Route::get('/logistik_detail', function (){
         return view('logistik_detail');
     });
-    Route::get('/admin',[LogistikController::class,'logistikdetail']);
+    Route::get('/admin',[KonsumenController::class,'konsumendetail']);
     Route::get('/DetailUser', function () {
         return view('Detail_User');
     });
@@ -92,7 +93,7 @@ Route::group(['middleware' => ['auth', 'hakakses:admin']], function() {
     Route::put('/editWP/{id}', [WajipPajakController::class, 'update']);
     Route::get('vendor_detail', [vendorController::class, 'vendordetail']);
     Route::get('wilayah_detail', [TblWilayahController::class, 'Wilayahdetail']);
-    Route::get('addlogistik', [vendorController::class, 'vendorlist']);
+    Route::get('addlogistik', [KonsumenController::class, 'konsumenlist']);
     Route::get('addwp', [groupController::class, 'grouplist']);
     Route::get('addwilayah', [TblareaController::class, 'DataArea']);
     Route::post('insertlogistik', [LogistikController::class, 'insert_logistik']);
