@@ -1,4 +1,4 @@
-@extends('header.apps',['title'=>'Tambah Data Machine'])
+@extends('header.apps',['title'=>'Edit Logistik Atau Machine'])
 @section('content')
 
 
@@ -16,7 +16,7 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Tambah Data Machine</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Update Data Machine</h6>
 
                {{$strtotime=date('Y-m-d H:i:s',time())}}
 
@@ -25,42 +25,34 @@
                 <div class="table-responsive">
                    <!--form input Data Logistik -->
                    <table class="table table-responsive" align="center">
-                    <form action="/insertlogistik" method="post">
+                    <form action="/editlogistik/{{ $dataedit->no_seri }}" method="post">
+                        @method('put')
                        @csrf
-                    <tr>
-                        <td>Nama Barang Atau Machine <span class="text-danger" title="This field is required">*</span></td><td>:</td><td>
-                            <select name="nm_brg" class="form-control form-control-user @error ('nm_brg') is-invalid @enderror">
-                                <option value="">Pilih Nama Barang Atau Machine</option>
-                                @foreach($databarang as $databarangs)
-                                <option value="{{ $databarangs-> nama_brg }}">{{ $databarangs -> nama_brg }}
+                       <tr>
+                        <td>No Seri <span class="text-danger" title="This field is required">*</span></td><td>:</td><td>
+                            <select name="Nomor_Seri" class="form-control form-control-user @error ('Nomor_Seri') is-invalid @enderror">
+                                <option value="">Pilih Nomor Seri</option>
+                                @foreach( $datanoseri as  $datanoseris)
+                                <option value="{{  $datanoseris-> no_seri }}"{{  $datanoseris ->no_seri==$dataedit-> no_seri?'selected':'' }}>{{  $datanoseris -> nama_brg }}-{{  $datanoseris -> no_seri }}
                                 @endforeach
                                 </option>
 
                             </select>
-                            @error('nm_brg')
+                            @error('Nomor_Seri')
                             <div class="invalid-feedback">
-                                {{ $message }}
-                                @enderror
-                              </div>
-                              Klik Di Sini <a href="/addbrg"> <i class="fa-solid fa-circle-plus"> </i> Data Barang / Machine </a>
+                            {{ $message }}
+                            @enderror
+                            </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td>Imei,No Seri,ID <span class="text-danger" title="This field is required">*</span></td><td>:</td><td><input type="text" name="imei" autocomplete="off" placeholder="Masukan Imei,No Seri,ID..." class="form-control form-control-user @error('imei') is-invalid @enderror" autofocus>
-                            @error('imei')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                                @enderror
-                              </div>
-                        </td>
-                    </tr>
-                   <input type="hidden" name="created_at" autocomplete="off" value="{{$strtotime=date('Y-m-d H:i:s',time())}}" class="form-control form-control-user" >
+                   
+                   <input type="hidden" name="updated_at" autocomplete="off" value="{{$strtotime=date('Y-m-d H:i:s',time())}}" class="form-control form-control-user" >
                         <tr>
                             <td>Status Lokasi <span class="text-danger" title="This field is required">*</span></td><td>:</td><td>
                                 <select name="Lokasi" class="form-control form-control-user @error ('Lokasi') is-invalid @enderror">
                                     <option value="">Pilih Status Lokasi</option>
-                                    @foreach($datakonsumen as $itemkonsumen)
-                                    <option value="{{ $itemkonsumen-> nama_toko }}">{{ $itemkonsumen -> kode_toko }}-{{ $itemkonsumen -> nama_toko }}
+                                    @foreach($datacostumer as $itemkonsumen)
+                                    <option value="{{ $itemkonsumen-> nama_toko }}"{{ $itemkonsumen ->nama_toko==$dataedit-> costumer?'selected':'' }}>{{ $itemkonsumen -> kode_toko }}-{{ $itemkonsumen -> nama_toko }}
                                     @endforeach
                                     </option>
 
@@ -70,17 +62,26 @@
                                 {{ $message }}
                                 @enderror
                                 </div>
-                                Klik Di Sini <a href="/addlokasi"> <i class="fa-solid fa-circle-plus"> </i> Data Lokasi </a>
                             </td>
                         </tr>
                         <tr>
                             <td>Kondisi Machine<span class="text-danger" title="This field is required">*</span></td><td>:</td><td>
                                 <select name="kondisi_Machine" class="form-control form-control-user @error ('kondisi_Machine') is-invalid @enderror">
                                 <option value="">Pilih Kondisi Machine</option>
-                                <option value="BAIK">BAIK</option>
-                                <option value="RUSAK">RUSAK</option>
+                                <option value="BAIK"{{ $dataedit->kondisi=="BAIK"?'selected':''}}>BAIK</option>
+                                <option value="RUSAK"{{ $dataedit -> kondisi=="RUSAK"?'selected':''}}>RUSAK</option>
                                 </select>
                                 @error('kondisi_Machine')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Note<span class="text-danger" title="This field is required">*</span></td><td>:</td><td>
+                                <textarea cols="10" rows="5" name="Note" class="form-control form-control-user @error ('Note') is-invalid @enderror" Placeholder ="Masukan Note Atau Keterangan">{{ $dataedit->note }}</textarea>
+                                @error('Note')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -93,7 +94,7 @@
             </div>
             <div class="modal-footer">
                 <button type="reset" class="btn btn-danger"><i class="fa fa-refresh"></i> Reset</button>
-                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save Data Machine</button>
+                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Update Data Machine</button>
 
                 </form>
             </div>

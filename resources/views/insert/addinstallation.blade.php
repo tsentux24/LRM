@@ -1,4 +1,4 @@
-@extends('header.apps',['title'=>'Tambah Data Installatio Atau Pemasangan'])
+@extends('header.apps',['title'=>'Tambah Data Installation Atau Pemasangan'])
 @section('content')
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -16,13 +16,13 @@
                 <h6 class="m-0 font-weight-bold text-primary">Note : </h6>
             </div>
             <div class="card-body">
-                <p>Form Untuk Melakukan Pemasangan Device Ke <code>WP (Wajib Pajak)</code>.</p>
+                <p>Form Untuk Melakukan Pemasangan Machine Ke<code> Customer Atau Toko</code>.</p>
             </div>
         </div>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Tambah Data Mutasi Logistik</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Tambah Data Pemasangan Machine</h6>
 
 
 
@@ -34,11 +34,11 @@
                     <form action="/insertPemasangan" method="post">
                        @csrf
                        <tr>
-                        <td>No Seri / Nama Device <span class="text-danger" title="This field is required">*</span></td><td>:</td><td>
+                        <td>No Seri / Nama Machine <span class="text-danger" title="This field is required">*</span></td><td>:</td><td>
                             <select name="Nomor_Seri" class="select2 form-select-lg mb-3 @error('Nomor_Seri') is-invalid @enderror" data-live-search="true" autofocus>
-                                <option value="">Pilih Noseri Device / Nama Device</option>
+                                <option value="">Pilih Noseri Device / Nama Machine</option>
                                 @foreach($datalogistik as $datalogistiks)
-                                <option value="{{ $datalogistiks-> no_seri }}&#44;{{ $datalogistiks -> nama_brg }}">{{ $datalogistiks-> no_seri }}&#44;{{ $datalogistiks -> nama_brg }}</option>
+                                <option value="{{ $datalogistiks-> no_seri }}&#44;{{ $datalogistiks -> nama_brg }}">{{ $datalogistiks-> no_seri }}&#44;{{ $datalogistiks -> nama_brg }}&#44;{{ $datalogistiks -> costumer }}</option>
 
                                 @endforeach
                                 </option>
@@ -52,21 +52,21 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Wajib Pajak <span class="text-danger" title="This field is required">*</span></td><td>:</td><td>
-                            <select name="Wajib_Pajak" class="select2 form-select-lg mb-3 @error('Wajib_Pajak') is-invalid @enderror" data-live-search="true">
-                                <option value="">Pilih Wajib Pajak</option>
-                                @foreach($dataWajibPajak as $dataWajibPajaks)
-                                <option value="{{ $dataWajibPajaks -> wajib_pajak }}&#44;{{ $dataWajibPajaks -> vendor }}">{{ $dataWajibPajaks -> wajib_pajak }}&#44;{{ $dataWajibPajaks -> vendor }}</option>
+                        <td>Customer<span class="text-danger" title="This field is required">*</span></td><td>:</td><td>
+                            <select name="Customer" class="select2 form-select-lg mb-3 @error('Customer') is-invalid @enderror" data-live-search="true">
+                                <option value="">Pilih Customer</option>
+                                @foreach($dataCustomer as $dataCustomers)
+                                <option value="{{ $dataCustomers -> kode_toko }}&#44;{{ $dataCustomers -> nama_toko }}">{{ $dataCustomers -> kode_toko }}&#44;{{ $dataCustomers-> nama_toko }}</option>
 
                                 @endforeach
                                 </option>
                             </select>
-                            @error('Wajib_Pajak')
+                            @error('Customer')
                             <div class="invalid-feedback">
                             {{ $message }}
                             @enderror
                             </div>
-                            Klik Di Sini <a href="/addwp"> <i class="fa-solid fa-circle-plus"> </i> Data Wajib Pajak </a>
+                            Klik Di Sini <a href="/addlokasi"> <i class="fa-solid fa-circle-plus"> </i> Data Customer </a>
                         </td>
                     </tr>
                     <tr>
@@ -79,7 +79,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Keterangan<span class="text-danger" title="This field is required">*</span></td><td>:</td><td><textarea name="Keterangan" autocomplete="off" placeholder="Masukan Secara detail keterangan mutasi contoh : Pemasangan Baru/OK Dll..." rows="7" cols="100" class="form-control form-control-user @error('Keterangan') is-invalid @enderror" autofocus></textarea>
+                        <td>Keterangan<span class="text-danger" title="This field is required">*</span></td><td>:</td><td><textarea name="Keterangan" autocomplete="off" placeholder="Masukan Secara detail keterangan Pemasangan contoh : Pemasangan Baru/OK Dll..." rows="7" cols="100" class="form-control form-control-user @error('Keterangan') is-invalid @enderror" autofocus></textarea>
                             @error('Keterangan')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -87,7 +87,7 @@
                               </div>
                         </td>
                     </tr>
-                   <input type="hidden" name="created_at" autocomplete="off" value="{{$strtotime=date('Y-m-d H:i:s',time())}" class="form-control form-control-user" >
+                   <input type="hidden" name="created_at" autocomplete="off" value="{{$strtotime=date('Y-m-d H:i:s',time())}}" class="form-control form-control-user">
                 </table>
 
                 <!--end Form input data logistik-->

@@ -17,24 +17,24 @@ class LogistikController extends Controller
     public function logistikdetail()
     {
         #$datalogistik = DB::table('tbllogistik')->get();
-        $datalogistik = DB::table('tbllogistik')->whereNotIn('istatus', ['MUTASI', 'TERPASANG'], '')->get();
+        $datalogistik = DB::table('tbllogistik')->get();
         return view('logistik_detail', ['tbllogistik' => $datalogistik]);
     }
+
     public function insert_logistik(Request $request)
     {
         $request->validate([
             'imei' => 'required|unique:tbllogistik,no_seri',
             'nm_brg' => 'required',
-            'status_device' =>  'required',
-            'location_device' => 'required',
-            'kondisi_device' => 'required',
+            'Lokasi' =>  'required',
+            'kondisi_Machine' => 'required',
         ]);
         DB::table('tbllogistik')->insert([
             'nama_brg' => Str::of($request->nm_brg)->upper(),
             'no_seri' => Str::of($request->imei)->upper(),
-            'istatus' => Str::of($request->status_device)->upper(),
-            'wilayah' => $request->location_device,
-            'kondisi' => $request->kondisi_device,
+            'costumer' => Str::of($request->Lokasi)->upper(),
+            'kondisi' => $request->kondisi_Machine,
+            'note' =>'-',
             'created_at' => $request->created_at,
         ]);
         return redirect('logistik_detail')->withSuccess('Data Logistik Created Successfully!');
@@ -44,19 +44,26 @@ class LogistikController extends Controller
         logistik::find($imei)->delete();
         return back();
     }
-    public function logistik_detail_SUM(){
-        #$count = DB::table('tbllogistik')->whereNotIn('istatus', ['MUTASI', 'TERPASANG'], '')->count();
-        #$totalTMD = DB::table ('tbllogistik')->whereNotIn('istatus', ['MUTASI', 'TERPASANG'])->where ('id_vendor','TMD PAC')->where('kondisi','BAIK','')->count();
-        #$totalTMD=DB::select("Select COUNT(id_vendor)  AS TOTAL_TMD from tbllogistik where id_vendor='TMD PAC' AND kondisi !='RUSAK' AND istatus !='TERPASANG' AND istatus !='MUTASI'");
-        #$totalMPOS = DB::table ('tbllogistik')->whereNotIn('istatus', ['MUTASI', 'TERPASANG'])->where ('id_vendor','MPOS PAC')->where('kondisi','BAIK','')->count();
-        #$dataFElogistik = DB::table('tbllogistik')->orderBy('kondisi','ASC')->whereNotIn('istatus', ['MUTASI', 'TERPASANG'], '')->simplePaginate(115);
-        #$totalMutasi = DB::table ('tbllogistik')->whereNotIn('istatus', ['MUTASI'])->where ('id_vendor', ['MPOS PAC','TMD PAC'])->where('kondisi','BAIK','')->count();
-        #$totalRusak = DB::table ('tbllogistik')->whereNotIn('istatus', ['MUTASI','TERPASANG'])->where ('id_vendor', ['MPOS PAC','TMD PAC'])->where('kondisi','RUSAK','')->count();
-        #return view('Beranda', ['tbllogistik' => $dataFElogistik]);
-        #$arrayTotalTMD=array($totalTMD);
-        #return view('Beranda',['datatmd' =>$arrayTotalTMD]);
-       #return view('admin', compact('dataFElogistik','count', 'totalTMD', 'totalMPOS','totalMutasi','totalRusak'));
-        #return $totalTMD;
-        #return view ('Beranda',['data' => $totalTMD]);
+    public function edit($no_seri){
+        $dataedit = DB::table('tbllogistik')->where('no_Seri', $no_seri)->first();
+        $datacostumer=DB::table('costumer')->get();
+        $datanoseri=DB::table('tbllogistik')->get();
+        return view('edit.edit_logistik', ['dataedit' => $dataedit],['datacostumer' => $datacostumer,'datanoseri' => $datanoseri]);
+    }
+    public function update(Request $request,$no_seri){
+        $request->validate([
+            'Nomor_Seri' => 'required',
+            'Lokasi'=> 'required',
+            'kondisi_Machine' => 'required',
+            'Note' =>'required',
+        ]);
+        DB::table('tbllogistik')->where ('no_seri',$no_seri)->update([
+            'no_seri' => $request -> Nomor_Seri,
+            'costumer' => $request -> Lokasi,
+            'kondisi' => $request -> kondisi_Machine,
+            'note' => $request -> Note
+        ]);
+        return redirect('/logistik_detail')->withSuccess('Data Logistik Update Successfully!');
+
     }
 }

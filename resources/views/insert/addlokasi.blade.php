@@ -1,4 +1,4 @@
-@extends('header.apps',['title'=>'Tambah Data Lokasi'])
+@extends('header.apps',['title'=>'Tambah Data Lokasi Atau Customer'])
 @section('content')
 
 
@@ -10,13 +10,13 @@
                 <h6 class="m-0 font-weight-bold text-primary">Note : </h6>
             </div>
             <div class="card-body">
-                <p>Form Untuk Menambahkan Data <code> Lokasi </code></p>
+                <p>Form Untuk Menambahkan Data <code> Lokasi </code> Atau <code> Customer</code></p>
             </div>
         </div>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Tambah Data Lokasi</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Tambah Data Lokasi Atau Customer</h6>
 
                {{$strtotime=date('Y-m-d H:i:s',time())}}
 
@@ -25,10 +25,10 @@
                 <div class="table-responsive">
                    <!--form input Data Logistik -->
                    <table class="table table-responsive" align="center">
-                    <form action="/insertvendor" method="post">
+                    <form action="/insertlokasi" method="post">
                        @csrf
                        <tr>
-                        <td>Kode Lokasi <span class="text-danger" title="This field is required">*</span></td><td>:</td><td><input type="text" name="Kode_Lokasi" autocomplete="off" placeholder="Masukan Kode Lokasi..." class="form-control form-control-user @error('Kode_Lokasi') is-invalid @enderror" autofocus>
+                        <td>Kode Lokasi / Customer <span class="text-danger" title="This field is required">*</span></td><td>:</td><td><input type="text" name="Kode_Lokasi" autocomplete="off" placeholder="Masukan Kode Lokasi..." class="form-control form-control-user @error('Kode_Lokasi') is-invalid @enderror" autofocus>
                             @error('Kode_Lokasi')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -37,7 +37,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Nama Lokasi <span class="text-danger" title="This field is required">*</span></td><td>:</td><td><input type="text" name="Nama_Lokasi" autocomplete="off" placeholder="Masukan Nama Lokasi..." class="form-control form-control-user @error('Nama_Lokasi') is-invalid @enderror" autofocus>
+                        <td>Nama Lokasi / Customer<span class="text-danger" title="This field is required">*</span></td><td>:</td><td><input type="text" name="Nama_Lokasi" autocomplete="off" placeholder="Masukan Nama Lokasi..." class="form-control form-control-user @error('Nama_Lokasi') is-invalid @enderror" autofocus>
                             @error('Nama_Lokasi')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -46,7 +46,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Alamat Lokasi<span class="text-danger" title="This field is required">*</span></td><td>:</td><td><input type="text" name="Alamat_Lokasi" autocomplete="off" placeholder="Masukan Alamat Lokasi..." class="form-control form-control-user @error('Alamat_Lokasi') is-invalid @enderror" autofocus>
+                        <td>Alamat Lokasi / Customer<span class="text-danger" title="This field is required">*</span></td><td>:</td><td><input type="text" name="Alamat_Lokasi" autocomplete="off" placeholder="Masukan Alamat Lokasi..." class="form-control form-control-user @error('Alamat_Lokasi') is-invalid @enderror" autofocus>
                             @error('Alamat_Lokasi')
                             <div class="invalid-feedback">
                                 {{ $message }}

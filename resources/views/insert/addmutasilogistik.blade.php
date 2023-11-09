@@ -16,13 +16,13 @@
                 <h6 class="m-0 font-weight-bold text-primary">Note : </h6>
             </div>
             <div class="card-body">
-                <p>Mutasi Untuk Melakukan Mutasi Device Ke <code>Hombase,Technical Support, Dll (Pemindahan,Pengiriman)</code>.</p>
+                <p>Form Untuk Melakukan Pemasangan Machine Ke <code>Customer</code>.</p>
             </div>
         </div>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Tambah Data Mutasi Logistik</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Tambah Data Pemasangan Machine</h6>
 
                {{$strtotime=date('Y-m-d H:i:s',time())}}
 
@@ -34,11 +34,11 @@
                     <form action="/insert_mutasi" method="post">
                        @csrf
                        <tr>
-                        <td>No Seri / Nama Device <span class="text-danger" title="This field is required">*</span></td><td>:</td><td>
+                        <td>No Seri / Nama Machine <span class="text-danger" title="This field is required">*</span></td><td>:</td><td>
                             <select name="Nomor_Seri" class="select2 form-select-lg mb-3 @error('Nomor_Seri') is-invalid @enderror" data-live-search="true">
-                                <option value="">Pilih Noseri Device / Nama Device</option>
+                                <option value="">Pilih Noseri Device / Nama Machine</option>
                                 @foreach($tbllogistik as $datalogistiks)
-                                <option value="{{ $datalogistiks-> no_seri }}&#44;{{ $datalogistiks -> nama_brg }}">{{ $datalogistiks-> no_seri }}&#44;{{ $datalogistiks -> nama_brg }}</option>
+                                <option value="{{ $datalogistiks-> no_seri }}&#44;{{ $datalogistiks -> nama_brg }}">{{ $datalogistiks-> no_seri }}&#44;{{ $datalogistiks -> nama_brg }}&#44;{{ $datalogistiks -> costumer }}</option>
 
                                 @endforeach
                                 </option>

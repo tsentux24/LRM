@@ -15,7 +15,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Note : </h6>
             </div>
             <div class="card-body">
-                <p>Form Untuk Melakukan Mutasi Pemasangan/installation Device Ke <code>Wajib Pajak</code></p>
+                <p>Form Untuk Melakukan Pemasangan/installation Machine Ke <code>Customer Atau Toko</code></p>
             </div>
         </div>
         <!-- DataTales Example -->
@@ -30,8 +30,7 @@
                         <tr>
                             <th>ID, Serial, Imei</th>
                             <th>Nama Barang</th>
-                            <th>Vendor</th>
-                            <th>Wajib Pajak</th>
+                            <th>Customer</th>
                             <th>Tgl Pasang</th>
                             <th>Keterangan</th>
                             <th>Created At</th>
@@ -43,10 +42,9 @@
                         <tr>
                             <th>ID, Serial, Imei</th>
                             <th>Nama Barang</th>
-                            <th>Vendor</th>
-                            <th>Status</th>
-                            <th>Wilayah</th>
-                            <th>Kondisi</th>
+                            <th>Customer</th>
+                            <th>Tgl Pasang</th>
+                            <th>Keterangan</th>
                             <th>Created At</th>
                             <th>Updated At</th>
                             <th width='auto' style="text-align:center" colspan="2">Action</th>
@@ -58,20 +56,20 @@
                             <tr>
                             <td>{{$Datapemasangans->no_seri}}</td>
                             <td>{{$Datapemasangans->nama_brg}}</td>
-                            <td>{{$Datapemasangans->id_vendor}}</td>
-                            <td>{{$Datapemasangans->wajib_pajak}}</td>
+                            <td>{{$Datapemasangans->costumer}}</td>
                             <td>{{$Datapemasangans->tgl_pasang}}</td>
                             <td>{{$Datapemasangans->keterangan}}</td>
                             <td>{{$Datapemasangans->created_at}}</td>
                             <td>{{$Datapemasangans->updated_at}}</td>
                             <td><div class='mb-2'>
-                             <form method="POST" action="{{ route('datalogistik.delete', $Datapemasangans->no_seri) }}">
+                             <form method="POST" action="{{ route('Datapemasangans.delete', $Datapemasangans->no_seri) }}">
                                     @csrf
                                     <input name="_method" type="hidden" value="DELETE">
                                     <div class="mt-1 mb-1"><button type="submit" class="btn btn-danger btn-circle btn-sm show_confirm" data-toggle="tooltip" title='Delete'><i class="fas fa-trash"></i></button></div></td>
+                                </form>
                                     <td>
-                                    <div class="mt-1 mb-1"><a href="#" class="btn-primary btn btn-xs btn-sm show_confirm" data-toggle="tooltip" title='Delete'><i class="fa fa-edit"></i></a></div>
-                                    </form>
+                                    <div class="mt-1 mb-1"><a href="#" class="btn-primary btn btn-xs btn-sm" data-toggle="tooltip" title='Delete'><i class="fa fa-edit"></i></a></div>
+                                   
                                 @endforeach
                         </tr>
                     </div>

@@ -2,6 +2,7 @@
 
 use Illuminate\Auth\Events\Logout;
 use App\Exports\LogistikDataExport;
+use App\Http\Controllers\barangcontroller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\groupController;
@@ -12,11 +13,13 @@ use App\Http\Controllers\TblareaController;
 use App\Http\Controllers\LogistikController;
 use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\RegisUserController;
+use App\Http\Controllers\colorantscontroller;
 use App\Http\Controllers\LogistikFEController;
 use App\Http\Controllers\SuperadminController;
 use App\Http\Controllers\TblWilayahController;
 use App\Http\Controllers\WajipPajakController;
 use App\Http\Controllers\LogLogistikController;
+use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\SuperoperatorController;
 use App\Http\Controllers\PemasanganDetailContraller;
 use Symfony\Component\EventDispatcher\DependencyInjection\RegisterListenersPass;
@@ -64,8 +67,8 @@ Route::group(['middleware' => ['auth', 'hakakses:admin']], function() {
     Route::get('/addlogistik', function (){
         return view('insert.addlogistik');
     });
-    Route::get('/addvendor', function (){
-        return view('insert.addvendor');
+    Route::get('/addlokasi', function (){
+        return view('insert.addlokasi');
     });
     Route::get('/addwilayah', function (){
         return view('insert.addwilayah');
@@ -77,7 +80,16 @@ Route::group(['middleware' => ['auth', 'hakakses:admin']], function() {
     Route::get('/addinstallation',function (){
         return view('insert.AddInstallation');
     });
+    Route::get('/Colorount_Calculation',function(){
+        return view('insert.Colorount_Calculation');
+    });
+    Route::get('/addbrg',function(){
+        return view('insert.addbrg');
+    });
+    Route::post('/insertbrg',[barangcontroller::class,'index']);
     Route::get('logistik_detail', [LogistikController::class, 'logistikdetail']);
+    Route::get('/Colorount_Calculation',[colorantscontroller::class,'colodetailYD']);
+    Route::get('lokasi_detail', [LokasiController::class, 'lokasilist']);
     Route::get('DetailUser',[RegisUserController::class,'UserDetail']);
     Route::get('pemasangan_detail', [PemasanganDetailContraller::class, 'index']);
     Route::get('addinstallation', [PemasanganDetailContraller::class, 'detailLogistik']);
@@ -86,11 +98,12 @@ Route::group(['middleware' => ['auth', 'hakakses:admin']], function() {
     Route::get('mutasi_logistik', [LogLogistikController::class, 'logistik_list']);
     Route::get('/wp_detail', [WajipPajakController::class, 'Wpdetail']);
     Route::get('editWP/{id}', [WajipPajakController::class, 'edit']);
+    Route::get('editlogistik/{no_seri}',[LogistikController::class,'edit']);
     Route::get('edithistorylog/{id}', [LogLogistikController::class, 'edit']);
     Route::get('editWilayah/{id}', [TblWilayahController::class, 'edit']);
     Route::put('editWilayah/{id}', [TblWilayahController::class, 'update']);
     Route::put('saveUpdateHistoryLog/{id}', [LogLogistikController::class, 'update']);
-    Route::put('/editWP/{id}', [WajipPajakController::class, 'update']);
+    Route::put('/editlogistik/{no_seri}', [LogistikController::class, 'update']);
     Route::get('vendor_detail', [vendorController::class, 'vendordetail']);
     Route::get('wilayah_detail', [TblWilayahController::class, 'Wilayahdetail']);
     Route::get('addlogistik', [KonsumenController::class, 'konsumenlist']);
@@ -100,9 +113,10 @@ Route::group(['middleware' => ['auth', 'hakakses:admin']], function() {
     Route::post('insertwp', [WajipPajakController::class, 'insert_wp']);
     Route::post('insert_wilayah', [TblWilayahController::class, 'insertwilayah']);
     Route::post('/insert_User',[RegisUserController:: class,'store']);
-    Route::post('insertvendor', [vendorController::class, 'insert_vendor']);
+    Route::post('insertlokasi', [KonsumenController::class, 'insert_lokasi']);
     Route::post('insert_mutasi', [LogLogistikController::class, 'insert_log']);
     Route::delete('logistik_detail/{no_seri}', [LogistikController::class, 'delete'])->name('datalogistik.delete');
+    Route::delete('pemasangan_detail/{no_seri}',[PemasanganDetailContraller::class,'delete'])->name('Datapemasangans.delete');
     Route::delete('vendor_detail/{id}', [vendorController::class, 'delete'])->name('DataDetailVendor.delete');
     Route::delete('wilayah_detail/{id}', [TblWilayahController::class, 'delete'])->name('DataDetailwilayah.delete');
 });

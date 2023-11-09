@@ -1,4 +1,4 @@
-@extends('header.apps',['title' => 'Detail Logistik'])
+@extends('header.apps',['title' => 'Detail Lokasi'])
 @section('content')
 
     <!-- Begin Page Content -->
@@ -6,8 +6,8 @@
 
         <!-- Page Heading -->
             <div class="my-2"></div>
-            <a href="addlogistik" id="btn_add_new_data" class="btn btn-success btn-social" title="Tambah Data">
-                <i class="fa fa-plus-circle"></i> Tambah Data Logistik
+            <a href="addlokasi" id="btn_add_new_data" class="btn btn-success btn-social" title="Tambah Data">
+                <i class="fa fa-plus-circle"></i> Tambah Data Lokasi
             </a>  
             <p>
             <div class="card shadow mb-4">
@@ -28,48 +28,41 @@
                     <table class="table table-bordered mb-0" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                            <th>ID, Serial, Imei</th>
-                            <th>Nama Barang</th>
-                            <th>Costumer</th>
-                            <th>Kondisi</th>
+                            <th>Kode Costumer</th>
+                            <th>Nama Costumer</th>
+                            <th>Alamat</th>
                             <th>Created At</th>
                             <th>Updated At</th>
-                            <th>Note</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
-                            <th>ID, Serial, Imei</th>
-                            <th>Nama Barang</th>
-                            <th>Costumer</th>
-                            <th>Kondisi</th>
+                            <th>Kode Costumer</th>
+                            <th>Nama Costumer</th>
+                            <th>Alamat</th>
                             <th>Created At</th>
                             <th>Updated At</th>
-                            <th>Note</th>
                             <th>Action</th>
                         </tr>
                         </tfoot>
                         <tbody>
                       
-                            @foreach($tbllogistik as $datalogistik)
+                            @foreach($datakonsumen as $datakonsumens)
                             <tr>
-                                <td>{{$datalogistik->no_seri}}</td>
-                                <td>{{$datalogistik->nama_brg}}</td>
-                                <td>{{$datalogistik->costumer}}</td>
-                                <td>{{$datalogistik->kondisi}}</td>
-                                <td>{{$datalogistik->created_at}}</td>
-                                <td>{{$datalogistik->updated_at}}</td>
-                                <td>{{ $datalogistik->note }}</td>
+                                <td>{{$datakonsumens->kode_toko}}</td>
+                                <td>{{$datakonsumens->nama_toko}}</td>
+                                <td>{{$datakonsumens->alamat}}</td>
+                                <td>{{$datakonsumens->created_at}}</td>
+                                <td>{{$datakonsumens->updated_at}}</td>
                             <td align="center">
-                                <form method="POST" action="{{ route('datalogistik.delete', $datalogistik->no_seri) }}">
+                                <form method="POST" action="{{ route('datalogistik.delete', $datakonsumens->kode_toko) }}">
                                     @csrf
                                     <input name="_method" type="hidden" value="DELETE">
                                     <button type="submit" class="btn btn-danger btn-circle btn-sm show_confirm" data-toggle="tooltip" title='Delete'><i class="fas fa-trash"></i></button>
-                                </form>
                                     <hr>
-                                   <a href="editlogistik/{{$datalogistik->no_seri}}?Slug={{Crypt::encrypt('$datalogistik->no_seri')}}" class="btn-primary btn btn-xs" ><i class="fa fa-edit"></i></a></td>
-                                    
+                                   <a href="#" class="btn-primary btn btn-xs btn-sm show_confirm" data-toggle="tooltip" title='Delete'><i class="fa fa-edit"></i></a></td>
+                                    </form>
                                 @endforeach
                         </tr>
                     

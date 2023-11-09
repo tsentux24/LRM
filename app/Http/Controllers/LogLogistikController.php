@@ -12,7 +12,7 @@ class LogLogistikController extends Controller
     public function logistik_list()
     {
         #$dataLogistik = DB::table('tbllogistik')->get();
-        $dataLogistik = DB::table('tbllogistik')->whereNotIn('istatus', ['MUTASI', 'TERPASANG'], '')->get();
+        $dataLogistik = DB::table('tbllogistik')->where('costumer', ['GUDANG TERNATE', 'GUDANG TOBELO','GUDANG BACAN'], '')->get();
         return view('insert.addmutasilogistik', ['tbllogistik' => $dataLogistik]);
     }
     public function viewHistory()
